@@ -12,12 +12,19 @@ class BlogController extends Controller
     {
         $blogs = Post::paginate(8);
         // return $blogs = Post::paginate(8);
-        return view('welcome', compact('blogs'));
+        $tagline = 'All Blogs';
+        return view('welcome', compact('blogs', 'tagline'));
     }
 
     public function postsByUser($username)
     {
-        return 'yess';
+        $user = User::where('username', $username)->first();
+        if ($user == '') {
+            return redirect('/');
+        }
+        $blogs = Post::where('user_id', $user->id)->paginate(8);
+        $tagline = 'All Blogs by '.$user->name;
+        return view('welcome', compact('blogs', 'user','tagline'));
     }
 
     public function showBlogDetails($username, $slug)
