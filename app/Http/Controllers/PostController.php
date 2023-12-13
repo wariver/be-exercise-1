@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\Category;
 use Auth;
 
 class PostController extends Controller
@@ -22,7 +23,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('admin/posts/create');
+        $categories = Category::all();
+        return view('admin/posts/create', compact('categories'));
     }
 
     /**
@@ -45,7 +47,9 @@ class PostController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $post = Post::findOrFail($id);
+        $categories = Category::all();
+        return view('admin/posts/show',compact('post', 'categories'));
     }
 
     /**
@@ -54,7 +58,8 @@ class PostController extends Controller
     public function edit(string $id)
     {
         $post = Post::findOrFail($id);
-        return view('admin/posts/edit',compact('post'));
+        $categories = Category::all();
+        return view('admin/posts/edit',compact('post', 'categories'));
     }
 
     /**
@@ -62,7 +67,16 @@ class PostController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        if ($request->is_published == 'on') {
+            $request['is_published'] = 'yes';
+        }else{
+            $request['is_published'] = 'no';
+        }
+
+        $post = Post::findOrFail($id);
+        $post->update($request->all());
+
+        return redirect('/admin/posts');
     }
 
     /**
@@ -70,6 +84,8 @@ class PostController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $post = Post::findOrFail($id);
+        $post->delete();
+        return redirect('/admin/posts');
     }
 }

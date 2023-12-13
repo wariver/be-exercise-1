@@ -13,6 +13,7 @@ class Post extends Model
 
     protected $fillable = [
         'title',
+        'category_id',
         'slug',
         'is_published',
         'content',

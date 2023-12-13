@@ -16,8 +16,9 @@ return new class extends Migration
             $table->string('title');
             $table->string('slug')->unique();
             $table->string('is_published');
-            $table->text('content');
+            $table->text('content', 50000);
             $table->foreignId('user_id')->constrained();
+            $table->foreignId('category_id')->constrained();
             $table->timestamps();
         });
     }

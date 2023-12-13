@@ -26,13 +26,12 @@
                     <input type="text" name="title" id="title" class="form-control" style="margin-bottom:10px" placeholder="Enter the post title...">
                 </div>
                 <div class="form-group">
-                    <label for="category">Category</label>
-                    <select class="form-control" name="category" id="category">
-                        <option>option 1</option>
-                        <option>option 2</option>
-                        <option>option 3</option>
-                        <option>option 4</option>
-                        <option>option 5</option>
+                    <label for="category_id">Category</label>
+                    <select class="form-control" name="category_id" id="category_id">
+                        <option value="">Select Category</option>
+                        @foreach ($categories as $category)
+                        <option value="{{$category->id}}">{{$category->name}}</option>
+                        @endforeach
                     </select>
                 </div>
                 <div class="form-group">
