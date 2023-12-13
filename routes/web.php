@@ -23,6 +23,7 @@ Route::resource('admin/posts', PostController::class)->middleware('auth');
 
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::post('/comment', [App\Http\Controllers\BlogController::class, 'addPostComment'])->middleware('auth');
 Route::get('/{username}', [App\Http\Controllers\BlogController::class, 'postsByUser']);
 Route::get('/{username}/{slug}', [BlogController::class, 'showBlogDetails'])
     ->where('slug', '[\w\d-]+') // Restricting the slug to word characters, digits, and hyphens
