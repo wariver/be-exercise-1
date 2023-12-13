@@ -17,7 +17,7 @@ use App\Http\Controllers\PostController;
 Route::get('/admin', function () {
     return view('admin/home');
 })->middleware('auth');
-Route::resource('posts', PostController::class)->middleware('auth');
+Route::resource('admin/posts', PostController::class)->middleware('auth');
 Route::get('/', function () {
     return view('welcome');
 });

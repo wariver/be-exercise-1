@@ -17,12 +17,9 @@
     <div class="row">
         <div class="col-md-12">
           <div class="card card-outline card-info">
-            <div class="card-header">
-              <h3 class="card-title">
-                Summernote
-              </h3>
-            </div>
-            <!-- /.card-header -->
+              <!-- /.card-header -->
+              <form action="/admin/posts" method="POST">
+                @csrf
             <div class="card-body">
                 <div class="form-group">
                     <label for="title">Title</label>
@@ -55,14 +52,15 @@
                 </div>
                 <div class="form-group">
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox">
+                      <input class="form-check-input" type="checkbox" name="is_published">
                       <label class="form-check-label">Is Published</label>
                     </div>
                 </div>
             </div>
-            {{-- <div class="card-footer">
-              Visit <a href="https://github.com/summernote/summernote/">Summernote</a> documentation for more examples and information about the plugin.
-            </div> --}}
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
           </div>
         </div>
         <!-- /.col-->

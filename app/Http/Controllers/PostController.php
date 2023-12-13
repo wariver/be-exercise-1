@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Post;
+use Auth;
 
 class PostController extends Controller
 {
@@ -11,7 +13,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        return view('admin/posts/index');
+        $posts = Post::where('user_id', Auth::user()->id)->get();
+        return view('admin/posts/index', compact('posts'));
     }
 
     /**
@@ -27,7 +30,14 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if ($request->is_published == 'on') {
+            $request['is_published'] = 'yes';
+        }else{
+            $request['is_published'] = 'no';
+        }
+        $request['user_id'] = Auth::user()->id;
+        Post::create($request->all());
+        return redirect('/admin/posts');
     }
 
     /**

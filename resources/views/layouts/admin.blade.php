@@ -102,13 +102,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/charts/chartjs.html" class="nav-link">
+                <a href="/admin/posts" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Posts List</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/charts/flot.html" class="nav-link">
+                <a href="/admin/posts/create" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Add Post</p>
                 </a>
