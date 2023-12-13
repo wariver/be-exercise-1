@@ -52,7 +52,7 @@
         <div class="site-navigation">
           <div class="row g-0 align-items-center">
             <div class="col-2">
-              <a href="index.html" class="logo m-0 float-start">Blogy<span class="text-primary">.</span></a>
+              <a href="index.html" class="logo m-0 float-start">Kurasa<span class="text-primary">.</span></a>
             </div>
             <div class="col-8 text-center">
               <form action="#" class="search-form d-inline-block d-lg-none">
@@ -122,7 +122,7 @@
     <div class="container">
       <div class="row align-items-center justify-content-center text-center pt-5">
         <div class="col-lg-6">
-          <h1 class="heading text-white mb-3" data-aos="fade-up">Blog</h1>
+          <h1 class="heading text-white mb-3" data-aos="fade-up">Welcome to Our Website</h1>
         </div>
       </div>
     </div>
