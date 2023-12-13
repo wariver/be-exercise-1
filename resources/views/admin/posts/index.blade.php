@@ -25,9 +25,7 @@
                       <th>S/No</th>
                       <th>Title</th>
                       <th>Status</th>
-                      <th>View</th>
-                      <th>Edit</th>
-                      <th>Delete</th>
+                      <th>Manage</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -37,10 +35,10 @@
                           <td>{{$post->title}}</td>
                           <td>{{$post->is_published}}</td>
                           <td>
-                            <a href="admin/posts/{{$post->id}}" type="button" class="btn btn-secondary btn-sm">View</a>
+                            <a href="/admin/posts/{{$post->id}}" type="button" class="btn btn-secondary btn-sm">View</a>
+                            <a href="/admin/posts/{{$post->id}}/edit" type="button" class="btn btn-warning btn-sm">Edit</a>
+                            <a href="/admin/posts/{{$post->id}}" type="button" class="btn btn-danger btn-sm">Delete</a>
                           </td>
-                          <td>X</td>
-                          <td>X</td>
                         </tr>
                         @endforeach
                     </tbody>
@@ -49,9 +47,7 @@
                         <th>S/No</th>
                         <th>Title</th>
                         <th>Status</th>
-                        <th>View</th>
-                        <th>Edit</th>
-                        <th>Delete</th>
+                        <th>Manage</th>
                     </tr>
                     </tfoot>
                   </table>
