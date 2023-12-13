@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/admin', function () {
     return view('admin/home');
 })->middleware('auth');
-
+Route::resource('posts', PostController::class)->middleware('auth');
 Route::get('/', function () {
     return view('welcome');
 });
