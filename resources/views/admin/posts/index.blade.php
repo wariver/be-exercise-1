@@ -24,6 +24,7 @@
                     <tr>
                       <th>S/No</th>
                       <th>Title</th>
+                      <th>Category</th>
                       <th>Status</th>
                       <th>Manage</th>
                     </tr>
@@ -33,6 +34,7 @@
                         <tr>
                           <td>{{$loop->index + 1}}</td>
                           <td>{{$post->title}}</td>
+                          <td>{{$post->category->name}}</td>
                           @if ($post->is_published == 'yes')
                           <td>Published</td>
                           @else
@@ -49,6 +51,7 @@
                     <tr>
                         <th>S/No</th>
                         <th>Title</th>
+                        <th>Category</th>
                         <th>Status</th>
                         <th>Manage</th>
                     </tr>

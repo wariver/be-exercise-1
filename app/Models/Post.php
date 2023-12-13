@@ -26,4 +26,9 @@ class Post extends Model
             $post->slug = Str::slug($post->title);
         });
     }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class, 'category_id');
+    }
 }
