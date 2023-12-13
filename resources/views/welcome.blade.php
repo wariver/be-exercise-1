@@ -1,4 +1,4 @@
-@extends('layouts/websiteLayout')
+@extends('layouts/website')
 @section('page-title')
   <div class="hero overlay inner-page bg-primary py-5">
     <div class="container">
