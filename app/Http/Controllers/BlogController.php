@@ -34,6 +34,9 @@ class BlogController extends Controller
         $user = User::where('username', $username)->first();
         $blog = Post::where('slug', $slug)->first();
         $comments = Comment::where('post_id', $blog->id)->orderBy('created_at', 'desc')->get();
+        //update the views count
+        $blog->views_count ++;
+        $blog->save();
         return view('blog-details',compact('blog','user','comments'));
     }
 

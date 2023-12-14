@@ -20,6 +20,7 @@ class Post extends Model implements HasMedia
         'slug',
         'is_published',
         'content',
+        'views_count',
         'user_id',
     ];
 

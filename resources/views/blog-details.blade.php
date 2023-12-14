@@ -1,6 +1,6 @@
 @extends('layouts/website')
 @section('page-title')
-<div class="site-cover site-cover-sm same-height overlay single-page" style="background-image: url('/website/images/hero_5.jpg');">
+<div class="site-cover site-cover-sm same-height overlay single-page" style="background-image: url({{$blog->getFirstMediaUrl('images', 'thumb') !=''? $blog->getFirstMediaUrl('images', 'thumb'): '/website/images/hero_5.jpg'}});">
     <div class="container">
       <div class="row same-height justify-content-center">
         <div class="col-md-6">
@@ -9,7 +9,7 @@
             <div class="post-meta align-items-center text-center">
               <figure class="author-figure mb-0 me-3 d-inline-block"><img src="/website/images/person_1.jpg" alt="Image" class="img-fluid"></figure>
               <a href="/{{$blog->user->username}}" type="button" class="btn btn-info btn-sm"><span>By {{$blog->user->name}}</span></a>
-              <span>&nbsp;-&nbsp; {{$blog->created_at->format('F j, Y')}}</span>
+              <span>&nbsp;-&nbsp; {{$blog->created_at->format('F j, Y')}}</span> | {{$blog->views_count}} Views
             </div>
           </div>
         </div>

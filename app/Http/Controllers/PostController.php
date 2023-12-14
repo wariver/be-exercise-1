@@ -38,6 +38,7 @@ class PostController extends Controller
             $request['is_published'] = 'no';
         }
         $request['user_id'] = Auth::user()->id;
+       
         $post = Post::create($request->all());
         //add media
         if($request->hasFile('image') && $request->file('image')->isValid()){
