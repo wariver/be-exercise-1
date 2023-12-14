@@ -1,6 +1,6 @@
 @extends('layouts/website')
 @section('page-title')
-<div class="site-cover site-cover-sm same-height overlay single-page" style="background-image: url('/website/images/hero_5.jpg');">
+<div class="site-cover site-cover-sm same-height overlay single-page" style="background-image: url({{$blog->getFirstMediaUrl('images', 'thumb') !=''? $blog->getFirstMediaUrl('images', 'thumb'): '/website/images/hero_5.jpg'}});">
     <div class="container">
       <div class="row same-height justify-content-center">
         <div class="col-md-6">
