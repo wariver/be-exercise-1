@@ -8,7 +8,7 @@
             <h1 class="mb-4">{{$blog->title}}</h1>
             <div class="post-meta align-items-center text-center">
               <figure class="author-figure mb-0 me-3 d-inline-block"><img src="/website/images/person_1.jpg" alt="Image" class="img-fluid"></figure>
-              <span class="d-inline-block mt-1">By {{$blog->user->name}}</span>
+              <a href="/{{$blog->user->username}}" type="button" class="btn btn-info btn-sm"><span>By {{$blog->user->name}}</span></a>
               <span>&nbsp;-&nbsp; {{$blog->created_at->format('F j, Y')}}</span>
             </div>
           </div>
