@@ -12,7 +12,7 @@ class BlogController extends Controller
 {
     public function homepage()
     {
-        $blogs = Post::paginate(8);
+        $blogs = Post::orderBy('created_at', 'desc')->paginate(8);
         // return $blogs = Post::paginate(8);
         $tagline = 'All Blogs';
         return view('welcome', compact('blogs', 'tagline'));
@@ -24,7 +24,7 @@ class BlogController extends Controller
         if ($user == '') {
             return redirect('/');
         }
-        $blogs = Post::where('user_id', $user->id)->paginate(8);
+        $blogs = Post::where('user_id', $user->id)->orderBy('created_at', 'desc')->paginate(8);
         $tagline = 'All Blogs by '.$user->name;
         return view('welcome', compact('blogs', 'user','tagline'));
     }
@@ -33,7 +33,7 @@ class BlogController extends Controller
     {
         $user = User::where('username', $username)->first();
         $blog = Post::where('slug', $slug)->first();
-        $comments = Comment::where('post_id', $blog->id)->whereNull('comment_id')->get();
+        $comments = Comment::where('post_id', $blog->id)->orderBy('created_at', 'desc')->get();
         return view('blog-details',compact('blog','user','comments'));
     }
 

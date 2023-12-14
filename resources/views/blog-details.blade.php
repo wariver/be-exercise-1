@@ -36,7 +36,7 @@
         @csrf
     <div class="form-group">
         <label for="message">Message</label>
-        <textarea  id="message" cols="30" rows="10" class="form-control" name="message"></textarea>
+        <textarea  id="message" cols="30" rows="10" class="form-control" name="message" required></textarea>
         <input  id="post_id"  class="form-control" name="post_id" value="{{$blog->id}}" hidden/>
     </div>
     <div class="form-group">
