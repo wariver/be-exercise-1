@@ -63,6 +63,8 @@
                 Delete Post
               </button>
             </div>
+            <h1 class="text-center">Featured Image</h1>
+            <input type="image" src="{{$post->getFirstMediaUrl('images', 'thumb')}}" width="700" height="700" alt="" style="align-self: center">
         </form>
           </div>
         </div>

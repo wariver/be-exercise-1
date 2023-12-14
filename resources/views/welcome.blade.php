@@ -14,7 +14,11 @@
   @foreach ($blogs as $blog)  
   <div class="blog-entry d-flex blog-entry-search-item">
     <a href="/{{$blog->user->username}}/{{$blog->slug}}" class="img-link me-4">
+      @if ($blog->getFirstMediaUrl('images', 'thumb') != '')
+      <img src="{{$blog->getFirstMediaUrl('images', 'thumb')}}" alt="Image" class="img-fluid">
+      @else 
       <img src="/website/images/img_2_sq.jpg" alt="Image" class="img-fluid">
+      @endif
     </a>
     <div>
       <span class="date">Apr. 14th, 2022 &bullet; <a href="#">{{$blog->category->name}}</a></span>

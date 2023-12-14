@@ -14,7 +14,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::where('user_id', Auth::user()->id)->get();
+        $posts = Post::where('user_id', Auth::user()->id)->orderBy('created_at', 'desc')->get();
         return view('admin/posts/index', compact('posts'));
     }
 
@@ -38,7 +38,11 @@ class PostController extends Controller
             $request['is_published'] = 'no';
         }
         $request['user_id'] = Auth::user()->id;
-        Post::create($request->all());
+        $post = Post::create($request->all());
+        //add media
+        if($request->hasFile('image') && $request->file('image')->isValid()){
+            $post->addMediaFromRequest('image')->toMediaCollection('images');
+        }
         return redirect('/admin/posts');
     }
 

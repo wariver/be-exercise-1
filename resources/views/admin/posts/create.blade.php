@@ -18,7 +18,7 @@
         <div class="col-md-12">
           <div class="card card-outline card-info">
               <!-- /.card-header -->
-              <form action="/admin/posts" method="POST">
+              <form action="/admin/posts" method="POST" enctype="multipart/form-data">
                 @csrf
             <div class="card-body">
                 <div class="form-group">
@@ -54,6 +54,12 @@
                       <input class="form-check-input" type="checkbox" name="is_published">
                       <label class="form-check-label">Is Published</label>
                     </div>
+                </div>
+                <div class="form-group">
+                  <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="image" name="image">
+                    <label class="custom-file-label" for="image">Cover Image</label>
+                  </div>
                 </div>
             </div>
             <div class="card-footer">
