@@ -39,7 +39,7 @@
                     <textarea id="summernote" name="content" class="form-control">
                     </textarea>
                 </div>
-                <div class="form-group">
+                {{-- <div class="form-group">
                     <label for="tags">Tags</label>
                     <select multiple="" class="form-control" name="tags" id="tags">
                         <option>option 1</option>
@@ -48,7 +48,7 @@
                         <option>option 4</option>
                         <option>option 5</option>
                       </select>
-                </div>
+                </div> --}}
                 <div class="form-group">
                     <div class="form-check">
                       <input class="form-check-input" type="checkbox" name="is_published">
