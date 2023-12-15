@@ -6,18 +6,38 @@ use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\User;
 use App\Models\Comment;
+use App\Models\Category;
 use Auth;
 
 class BlogController extends Controller
 {
-    public function homepage()
+    public function homepage(Request $request)
     {
         $blogs = Post::orderBy('created_at', 'desc')->paginate(8);
         // return $blogs = Post::paginate(8);
         $tagline = 'All Blogs';
+        //check if we have category set
+        if ($request->category != '') {
+            $category = Category::where('name', $request->category)->first();
+            if ($category != '') {
+                 $blogs = Post::where('category_id', $category->id)->orderBy('created_at', 'desc')->paginate(8);;
+                 $tagline = "All Blogs for ".$category->name;
+            }
+        }
         return view('welcome', compact('blogs', 'tagline'));
     }
 
+    // public function postsByCategory($category)
+    // {
+    //     if ($request->category != '') {
+    //         $category = Category::where('name', $request->category)->first();
+    //         if ($category != '') {
+    //              $blogs = Post::where('category_id', $category->id)->orderBy('created_at', 'desc')->paginate(8);;
+    //              $tagline = "All Blogs for ".$category->name;
+    //         }
+    //     }
+    //     return view('welcome', compact('blogs', 'user','tagline'));
+    // }
     public function postsByUser($username)
     {
         $user = User::where('username', $username)->first();

@@ -28,3 +28,4 @@ Route::get('/{username}', [App\Http\Controllers\BlogController::class, 'postsByU
 Route::get('/{username}/{slug}', [BlogController::class, 'showBlogDetails'])
     ->where('slug', '[\w\d-]+') // Restricting the slug to word characters, digits, and hyphens
     ->name('posts.show');
+Route::get('/{category?}', [App\Http\Controllers\BlogController::class, 'postsByCategory']);
