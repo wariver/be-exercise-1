@@ -147,39 +147,23 @@
             <h3 class="heading">Popular Posts</h3>
             <div class="post-entry-sidebar">
               <ul>
+                @foreach ($popular_posts as $popular_post)
                 <li>
-                  <a href="">
+                  <a href="/{{$popular_post->user->username}}/{{$popular_post->slug}}" class="img-link me-4">
+                    @if ($popular_post->getFirstMediaUrl('images', 'thumb') != '')
+                    <img src="{{$popular_post->getFirstMediaUrl('images', 'thumb')}}" alt="Image" class="me-4 rounded">
+                    @else 
                     <img src="/website/images/img_1_sq.jpg" alt="Image placeholder" class="me-4 rounded">
+                    @endif
                     <div class="text">
-                      <h4>There’s a Cool New Way for Men to Wear Socks and Sandals</h4>
+                      <h4>{{$popular_post->title}}</h4>
                       <div class="post-meta">
-                        <span class="mr-2">March 15, 2018 </span>
+                        <span class="mr-2">{{$popular_post->created_at->format('F d, Y')}} </span>
                       </div>
                     </div>
                   </a>
                 </li>
-                <li>
-                  <a href="">
-                    <img src="/website/images/img_2_sq.jpg" alt="Image placeholder" class="me-4 rounded">
-                    <div class="text">
-                      <h4>There’s a Cool New Way for Men to Wear Socks and Sandals</h4>
-                      <div class="post-meta">
-                        <span class="mr-2">March 15, 2018 </span>
-                      </div>
-                    </div>
-                  </a>
-                </li>
-                <li>
-                  <a href="">
-                    <img src="/website/images/img_3_sq.jpg" alt="Image placeholder" class="me-4 rounded">
-                    <div class="text">
-                      <h4>There’s a Cool New Way for Men to Wear Socks and Sandals</h4>
-                      <div class="post-meta">
-                        <span class="mr-2">March 15, 2018 </span>
-                      </div>
-                    </div>
-                  </a>
-                </li>
+                @endforeach
               </ul>
             </div>
           </div>
@@ -188,11 +172,9 @@
           <div class="sidebar-box">
             <h3 class="heading">Categories</h3>
             <ul class="categories">
-              <li><a href="#">Food <span>(12)</span></a></li>
-              <li><a href="#">Travel <span>(22)</span></a></li>
-              <li><a href="#">Lifestyle <span>(37)</span></a></li>
-              <li><a href="#">Business <span>(42)</span></a></li>
-              <li><a href="#">Adventure <span>(14)</span></a></li>
+              @foreach ($categories as $category)
+              <li><a href="#">{{$category->name}} <span>{{$category->posts->count()}}</span></a></li>
+              @endforeach
             </ul>
           </div>
           <!-- END sidebar-box -->
